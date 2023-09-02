@@ -30,6 +30,8 @@
 
 import { useState } from "react";
 import TodoItem from "./components/TodoItem";
+import TodoForm from './components/TodoForm";
+
 
 function App() {
 	const [todos, setTodos] = useState([
@@ -40,14 +42,21 @@ function App() {
 		"meet a friend for lunch",
 		"Eat 16 fish"
 	]);
+
+	const addTodo = (text) => {
+		const newTodos = (...todos, text);
+		setTodos(newTodos)
+	}
+
 	return (
 		<>
 			<h1>My Todo List</h1>
-			{todos.map(todo => {
-				return <TodoItem text={todo} />;
+			<TodoForm addTodo={addTodo} />
+			{todos.map(todo, index) => (
+				
+				<TodoItem text={todo} key= {index} />);
 			})}
 		</>
-	);
 }
 
 export default App;

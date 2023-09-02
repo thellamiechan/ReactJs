@@ -12,3 +12,23 @@ const TodoItem = props => {
 };
 
 export default TodoItem;
+
+
+function TodoForm(props) {
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		if (!value) {
+			return;
+		}
+		props.addTodo(value);
+		setValue("");
+	};
+
+	retun (
+		<form>
+			<input type="text" placeholder = "Add Todo" />
+		</form>
+	);
+}
+
+export default TodoForm;
