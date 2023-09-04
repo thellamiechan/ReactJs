@@ -1,8 +1,26 @@
-function TodoForm() {
+import { useState } from "react";
+
+function TodoForm(props) {
+    const [value, setValue] = useState("")
+
+    const handleSubmit = (event) => {
+        event.preventDefaulet();
+        if (!value) {
+            return;
+        }
+        props.addTodo(value);
+        setValue("");
+    };
+
     return (
-        <form>
-            <input type="text" placeholder="Add Todo..." />
+        <form onSubmit={handleSubmit}>
+            <input 
+                value={value}
+                type="text"
+                placeholder="Add Todo..."
+                onChange={(event) => setValue(event.target.value)}
+            />
         </form>
-    )
+    );
 }
 export default TodoForm;
